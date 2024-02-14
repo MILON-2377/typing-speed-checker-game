@@ -4,8 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>typing speed checker game</title>
+
+    <!-- daisy khala and tailwind link -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- styles sheet link -->
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- custom  anton font lint-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <!-- custom poppins font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- custom inter font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- custom icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 <body>
-    
+    <header></header>
+
+    <!-- main section -->
+    <main class="bg-[#1E1E1EFF] min-h-screen bg-[url('images/background.png')] bg-no-repeat bg-center">
+        <!-- home screen page -->
+        <div id="home-page" class=" flex items-center justify-center h-screen">
+            <div class="text-white flex flex-col items-center justify-center gap-6">
+                <h1 class="anton-regular text-9xl">ALPHABET CLASH</h1>
+                <p class="poppins-regular text-white font-medium">Unleash Your keyboard Kung Fu : Press "Enter" to Play</p>
+                <button onclick="playGame()" class="btn text-[#010313FF] poppins-regular font-semibold text-2xl">Play Now</button>
+            </div>
+        </div>
+
+        <!-- play ground screen page -->
+        <div id="play-ground" class="hidden pt-6 flex flex-col gap-8">
+
+            <!-- Playing key diplay section -->
+            <div class=" artboard-horizontal phone-5 border-[18px] rounded-2xl border-[#010313CC] bg-gradient-to-r from-violet-500 to-fuchsia-500 w-4/5 h-[60vh]  mx-auto">
+
+                    <p class=" mx-auto font-medium text-base text-white text-center px-2 pb-6 bg-[#010313CC] rounded-b-xl w-80">Don't watch keyborad while playing.... </p>
+                <div class="my-auto h-[80%] flex flex-col justify-center items-center">
+                    
+                    <span id="display-letter" class="text-[#010313FF] font-semibold text-9xl uppercase">Y</span>
+                    <input id="display-input" class="hidden" type="text">
+                </div>
+            </div>
+
+            <!-- button container -->
+            <div id="button-container">
+                <div id="button-list-container-1" class="flex justify-center gap-1 my-1 w-full">
+                    <kbd id="q" class="kbd">q</kbd>
+                    <kbd id="w" class="kbd">w</kbd>
+                    <kbd id="e" class="kbd">e</kbd>
+                    <kbd id="r" class="kbd">r</kbd>
+                    <kbd id="t" class="kbd">t</kbd>
+                    <kbd id="y" class="kbd">y</kbd>
+                    <kbd id="u" class="kbd">u</kbd>
+                    <kbd id="i" class="kbd">i</kbd>
+                    <kbd id="o" class="kbd">o</kbd>
+                    <kbd id="p" class="kbd">p</kbd>
+                  </div> 
+                  <div id="button-list-container-2" class="flex justify-center gap-1 my-1 w-full">
+                    <kbd id="a" class="kbd">a</kbd>
+                    <kbd id="s" class="kbd">s</kbd>
+                    <kbd id="d" class="kbd">d</kbd>
+                    <kbd id="f" class="kbd">f</kbd>
+                    <kbd id="g" class="kbd">g</kbd>
+                    <kbd id="h" class="kbd">h</kbd>
+                    <kbd id="j" class="kbd">j</kbd>
+                    <kbd id="k" class="kbd">k</kbd>
+                    <kbd id="l" class="kbd">l</kbd>
+                  </div> 
+                  <div id="button-list-container-3" class="flex justify-center gap-1 my-1 w-full">
+                    <kbd id="z" class="kbd">z</kbd>
+                    <kbd id="x" class="kbd">x</kbd>
+                    <kbd id="c" class="kbd">c</kbd>
+                    <kbd id="v" class="kbd">v</kbd>
+                    <kbd id="b" class="kbd">b</kbd>
+                    <kbd id="n" class="kbd">n</kbd>
+                    <kbd id="m" class="kbd">m</kbd>
+                    <kbd id="/" class="kbd">/</kbd>
+                  </div>
+            </div>
+
+            <!-- scroe displaying section -->
+            <div class="flex justify-between w-4/5 mx-auto">
+
+                <!-- life core section -->
+                <div class="btn border-none rounded-3xl px-7 bg-purple-600 hover:bg-purple-800 text-white inter-font">
+                    <span class="text-xl">Life</span>
+                    <div>
+                        <img src="images/icons8-heart-48.png" alt="">
+                    </div>
+                    <span class="text-xl">1</span>
+                </div>
+
+                <!-- score section -->
+                <div class="btn border-none rounded-3xl px-7 bg-[#360490FF] hover:bg-purple-800 text-white inter-font">
+                    <span class="text-xl">Score</span>
+                    <div class="h-7 w-7 border-2 rounded-full bg-white">
+                        <i class="fa-solid fa-dollar-sign text-2xl text-slate-900"></i>
+                    </div>
+                    <span class="text-xl">1</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- play end screen section page -->
+        <div class="hidden flex justify-center my-auto h-screen items-center">
+            <div class="poppins-regular bg-gradient-to-r from-violet-500 to-fuchsia-500 w-[55vh] h-[38vh] rounded-xl flex flex-col justify-evenly p-10 items-center">
+                <p class="text-6xl font-extrabold text-white">
+                    <span>Score :</span>
+                    <span>14</span>
+                </p>
+                <button class="btn w-52 text-slate-900 bg-white text-xl hover:bg-purple-800 hover:text-white hover:border-none border-none">Play Again</button>
+                <p class="text-xl font-medium text-white">Practice will make you a Pro</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script/alpha-checker.js"></script>
 </body>
 </html>
