@@ -30,29 +30,86 @@ function makeAlphabetArray(){
 
     const randomNumberRond = makeRandomNumber();
     const letter = letterArray[randomNumberRond];
+   
+    const takeButtonId = document.getElementById(`${letter}`);
+    takeButtonId.classList.add("bg-orange-500");
     
-    displayInput(letter);
     return letter;
 }
 
 function toDisplayLetter(inputId){
-
-    const displayLetter = makeAlphabetArray();
-    const display = document.getElementById(inputId);
-    display.innerText = displayLetter;
-
-    const button = document.getElementById(`${displayLetter}`);
-    button.classList.add("bg-orange-500");
+    const displayText = document.getElementById(inputId);
     
+    displayText.innerText = makeAlphabetArray()
 }
 
-function displayInput(word){
-    const displayInputText = document.getElementById("display-input");
-    displayInputText.value = `${word}`;
-
-    displayInputText.addEventListener("keyup", function(e){
-        console.log(e);
-    })
+function toTakeDisplayLetter(inputId){
+    const display = document.getElementById(inputId);
+    const innerText = display.innerText;
+    
+    return innerText
 }
 
+function takeButtonId(id){
+    const buttonId = document.getElementById(id);
+    buttonId.classList.remove("bg-orange-500");
+}
 
+function indicateDisplayButton(){
+    const innerLetter = toDisplayLetter("display-letter");
+    const lowerCaseLetter = innerLetter.toLowerCase();
+
+}
+
+function scroeInscrease(input){
+    const scoreId = document.getElementById(input);
+    const scoreValue = scoreId.innerText;
+    const scoreFinalValue = parseInt(scoreValue);
+    
+    const value = scoreFinalValue + 1;
+    return value;
+}
+
+function updateScore (input, value){
+    const scoreValue = takeButtonId(input);
+    scoreValue.innerText = value;
+
+}
+
+    const displayrInnerLette = toTakeDisplayLetter("display-letter");
+    const lowerCaseInnerText = displayrInnerLette.toLowerCase();
+
+document.addEventListener("keyup", (e) => {
+    const pressKey = e.key;
+
+    const life = document.getElementById("life-score");
+    const innerVal = parseInt(life.innerText);
+
+
+    if(pressKey === "Escape"){
+        homePageHidden("play-ground");
+        toShowPlayGroundPage("score-section");
+    }
+
+    if(pressKey === lowerCaseInnerText){
+        playGame()
+        takeButtonId(`${lowerCaseInnerText}`);
+    }else{
+        const lifeScore = innerVal - 1;
+        life.innerText = lifeScore;
+
+        if(lifeScore === 0){
+            homePageHidden("play-ground");
+            toShowPlayGroundPage("score-section");
+            takeButtonId(`${lowerCaseInnerText}`);
+        }
+
+    }
+
+}, false)
+
+function playAgain(){
+    playGame();
+    homePageHidden("score-section")
+    takeButtonId(`${lowerCaseInnerText}`);
+}

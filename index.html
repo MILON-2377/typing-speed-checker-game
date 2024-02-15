@@ -42,7 +42,7 @@
             <div class="text-white flex flex-col items-center justify-center gap-6">
                 <h1 class="anton-regular text-9xl">ALPHABET CLASH</h1>
                 <p class="poppins-regular text-white font-medium">Unleash Your keyboard Kung Fu : Press "Enter" to Play</p>
-                <button onclick="playGame()" class="btn text-[#010313FF] poppins-regular font-semibold text-2xl">Play Now</button>
+                <button onclick="play()" class="btn text-[#010313FF] poppins-regular font-semibold text-2xl">Play Now</button>
             </div>
         </div>
 
@@ -56,7 +56,6 @@
                 <div class="my-auto h-[80%] flex flex-col justify-center items-center">
                     
                     <span id="display-letter" class="text-[#010313FF] font-semibold text-9xl uppercase">Y</span>
-                    <input id="display-input" class="hidden" type="text">
                 </div>
             </div>
 
@@ -106,7 +105,7 @@
                     <div>
                         <img src="images/icons8-heart-48.png" alt="">
                     </div>
-                    <span class="text-xl">1</span>
+                    <span id="life-score" class="text-xl">5</span>
                 </div>
 
                 <!-- score section -->
@@ -115,25 +114,28 @@
                     <div class="h-7 w-7 border-2 rounded-full bg-white">
                         <i class="fa-solid fa-dollar-sign text-2xl text-slate-900"></i>
                     </div>
-                    <span class="text-xl">1</span>
+                    <span id="score-container" class="text-xl">0</span>
                 </div>
 
             </div>
         </div>
 
         <!-- play end screen section page -->
-        <div class="hidden flex justify-center my-auto h-screen items-center">
+        <div id="score-section" class="hidden flex justify-center my-auto h-screen items-center">
             <div class="poppins-regular bg-gradient-to-r from-violet-500 to-fuchsia-500 w-[55vh] h-[38vh] rounded-xl flex flex-col justify-evenly p-10 items-center">
+                <p class="text-3xl text-white">Game Over !</p>
                 <p class="text-6xl font-extrabold text-white">
                     <span>Score :</span>
-                    <span>14</span>
+                    <span id="final-score" class="text-black">14</span>
                 </p>
-                <button class="btn w-52 text-slate-900 bg-white text-xl hover:bg-purple-800 hover:text-white hover:border-none border-none">Play Again</button>
+                <button onclick="playAgaing()" class="btn w-52 text-slate-900 bg-white text-xl hover:bg-purple-800 hover:text-white hover:border-none border-none">Play Again</button>
                 <p class="text-xl font-medium text-white">Practice will make you a Pro</p>
             </div>
         </div>
     </main>
 
-    <script src="script/alpha-checker.js"></script>
+    <script src="script/play-game.js"></script>
+    <!-- <script src="script/alpha-checker.js"></script> -->
+    <!-- <script src="script/Utitlity.js"></script> -->
 </body>
 </html>
